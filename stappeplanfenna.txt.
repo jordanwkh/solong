@@ -1,0 +1,7 @@
+1. map in een 2D array (split, strdup)
+2. error checks: vierkant, werken 1 exit, collecitbles, 1 player. Coordinaten opslaan van posities. Coordinaten van de player in een struct gezet. check of alleen valid tekens er in staan, check of er alleen maar muren om heen staan (gesloten)
+3. images op scherm projecteren (heb jij gedaan). Daarna elke image aan een van de letters connecten.
+4. hooks. als je bijvoorbeeld naar boven loopt, veranderen de coordinaten van waar je poppetje staat.
+5. Spelregels. Dus als je op een collectible staat gaat die weg, uitgang gaat pas open als er 0 collectibles zijn, door muren kan je niet lopen, etc
+6. count van hoeveel stappen. let op, doe eerst de check of er een muur staat. als er een muur staat kan je namelik ook geen stappen zetten.
+7. Lekkages + norminette 
