@@ -6,7 +6,7 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/05 15:08:10 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/19 14:27:27 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2022/11/01 13:23:37 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,58 @@
 #include "solong.h"
 #include "libft.h"
 
+char	**copyingmap(t_game *info)
+{
+	int		i;
+	char	**copymap;
+
+	copymap = (char **) malloc(sizeof(char *) * (info->maplen + 1));
+	if (!copymap)
+		free(copymap);
+	i = 0;
+	while (info->map[i])
+	{
+		copymap[i] = ft_strdup(info->map[i]);
+		printf("%s\n", copymap[i]);
+		i++;
+	}
+	copymap[i] = NULL;
+	return (copymap);
+}
+
+static char	*readingmap(int fd)
+{
+	char	*line;
+	char	*readline;
+	char	*tmp;
+
+	line = get_next_line(fd);
+	if (!line)
+		return (false);
+	readline = line;
+	while (line)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		tmp = readline;
+		readline = ft_strjoin(readline, line);
+		free(tmp);
+		if (!readline)
+			(free(line));
+	}
+	return (readline);
+}
+
 static bool	readfile(char **argv, t_game *info)
 {
 	int		fd;
-	char	*line;
 	char	*readline;
 
 	fd = open (argv[1], O_RDONLY);
 	if (fd == -1)
 		return (false);
-	line = get_next_line(fd);
-	readline = ft_strdup(line);
-	if (!readline || !line)
-	{
-		free(line);
-		free (readline);
-		return (false);
-	}	
-	while (line)
-	{
-		free (line);
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		readline = ft_strjoin(readline, line);
-		if (!readline)
-			return (free(line), false);
-	}
+	readline = readingmap(fd);
 	info->map = ft_split(readline, '\n');
 	free (readline);
 	if (!info->map)
@@ -55,7 +80,7 @@ static bool	parse_map(char **argv, t_game *info)
 {
 	if (!readfile(argv, info))
 	{
-		printf("test\n");
+		ft_printf("%s\n", "can't load the map");
 		return (false);
 	}
 	info->maplen = 0;
@@ -80,5 +105,6 @@ int	main(int argc, char **argv)
 		return (false);
 	start_mlx(&info);
 	mlx_loop(info.mlx);
+	mlx_terminate(info.mlx);
 	return (0);
 }

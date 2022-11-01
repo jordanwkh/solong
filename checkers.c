@@ -6,7 +6,7 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/05 13:06:39 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/21 17:10:37 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2022/10/31 16:07:00 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,14 @@ bool	map_form_check(t_game *info)
 
 bool	checkers(t_game *info)
 {
-	int				x;
-	int				y;
-	char	**copymap;
-
 	if (map_form_check(info) == false)
 	{
-		ft_printf("%s\n", "Map is not sqaure, or rectangular");
+		printf("%s\n", "Map is not sqaure, or rectangular");
 		return (false);
 	}	
 	if (xwall_checker(info) == false)
 	{
-		ft_printf("%s\n", "Top or bottom wall is not closed off");
+		printf("%s\n", "Top or bottom wall is not closed off");
 		return (false);
 	}	
 	if (ywall_checker(info) == false)
@@ -86,46 +82,10 @@ bool	checkers(t_game *info)
 		ft_printf("%s\n", "Left or right wall is not closed off");
 		return (false);
 	}	
-	y = 0;
-	x = 0;
-	copymap = info->map;
-	floodfill(info, x, y);
-	// {
-	// 	ft_printf("%s\n", "Map can not be completed");
-	// 	return (false);
-	// }
+	if (checkingthemap(info) == false)
+	{
+		printf("%s\n", "Map can not be completed");
+		return (false);
+	}
 	return (true);
 }	
-
-void	floodfill(t_game *info, int x, int y)
-{
-	int	collect;
-
-	collect = 0;
-	if (info->map[y][x] == 'E')
-	{
-		ft_printf("%s\n", "test E");
-		info->exit_reach = true;
-		return ;
-	}	
-	else if (info->map[y][x] == '1')
-	{
-		ft_printf("%s\n", "test 1");
-		return ;
-	}	
-	else if (info->map[y][x] == 'C')
-	{
-		ft_printf("%s\n", "test C");
-		collect++;
-		if (collect == info->collectable)
-		{
-			info->collect_reach = true;
-			return ;
-		}	
-	}
-	info->map[y][x] = 1;
-	floodfill (info, x, (y - 1));
-	floodfill (info, (x + 1), y);
-	floodfill (info, x, (y + 1));
-	floodfill (info, (x - 1), y);
-}

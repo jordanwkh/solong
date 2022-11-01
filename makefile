@@ -6,7 +6,7 @@
 #    By: jhoekstr <jhoekstr@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/09/05 15:18:40 by jhoekstr      #+#    #+#                  #
-#    Updated: 2022/10/10 15:12:03 by jhoekstr      ########   odam.nl          #
+#    Updated: 2022/10/31 15:59:02 by jhoekstr      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ move.c\
 checkers.c\
 mlx.c\
 images.c\
-entitys.c
+entitys.c\
+floodfill.c
 
 
 OBJ = $(SRCS:%.c=%.o)

@@ -6,7 +6,7 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 16:39:14 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/21 13:07:57 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2022/11/01 13:19:09 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ bool	start_mlx(t_game *info)
 	putimg(info);
 	mlx_key_hook(info->mlx, (mlx_keyfunc)my_keyhook, info);
 	mlx_loop(info->mlx);
-	//mlx_terminate(mlx);
 	return (true);
 }

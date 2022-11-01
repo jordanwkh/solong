@@ -6,7 +6,7 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/05 15:20:09 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/21 15:06:25 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2022/10/31 16:03:25 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ bool	checkers(t_game *info);
 bool	set_images(t_game *info);
 bool	nowallmove(t_game *info, int x_direction, int y_direction);
 bool	doing_exit(t_game *info, int x_direction, int y_direction);
-void	floodfill(t_game *info, int x, int y);
-
+void	floodfill(t_game *info, char **copymap, int x, int y);
+char	**copyingmap(t_game *info);
+bool	checkingthemap(t_game *info);
 #endif
