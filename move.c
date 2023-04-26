@@ -6,11 +6,11 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/22 16:08:21 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/31 13:16:26 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/26 14:58:19 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include <solong.h>
 
 void	my_keyhook(mlx_key_data_t keydata, t_game *info)
 {

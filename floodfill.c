@@ -6,11 +6,11 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 15:58:27 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/31 16:11:20 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/26 14:58:19 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include <solong.h>
 
 bool	checkingthemap(t_game *info)
 {

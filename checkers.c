@@ -6,11 +6,11 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/05 13:06:39 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/31 16:07:00 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/26 14:58:19 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include <solong.h>
 
 bool	xwall_checker(t_game *info)
 {

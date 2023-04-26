@@ -6,11 +6,11 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/29 16:39:14 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/11/01 13:19:09 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/26 14:58:19 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include <solong.h>
 
 bool	start_mlx(t_game *info)
 {

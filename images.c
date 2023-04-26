@@ -6,11 +6,11 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/23 16:14:04 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/17 15:01:24 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/26 14:58:19 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include <solong.h>
 
 bool	set_images(t_game *info)
 {

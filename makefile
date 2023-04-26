@@ -3,7 +3,7 @@
 #                                                         ::::::::             #
 #    makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: jhoekstr <jhoekstr@student.codam.nl>         +#+                      #
+#    By: jhoekstr <jhoekstrstudent.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/09/05 15:18:40 by jhoekstr      #+#    #+#                  #
 #    Updated: 2022/10/31 15:59:02 by jhoekstr      ########   odam.nl          #
@@ -12,52 +12,56 @@
 
 NAME = so_long
 
-SRCS = main.c\
-move.c\
-checkers.c\
-mlx.c\
-images.c\
-entitys.c\
-floodfill.c
+SRCS = 	main.c							\
+		move.c							\
+		checkers.c						\
+		mlx.c							\
+		images.c						\
+		entitys.c						\
+		floodfill.c						
 
-
-OBJ = $(SRCS:%.c=%.o)
+OBJ = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -Imlx -g -fsanitize=address
 
 LIBMLX	= ./MLX42
 
-HEADERS	= -I MLX42/include/MLX42 -I libft
+HEADERS	= $(addprefix -I,						\
+				MLX42/include/MLX42				\
+				$(LIBFT_DIR)							\
+				./								\
+				)
 
-LINKFLAGS	= -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit MLX42/libmlx42.a
+LINKFLAGS	= -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit MLX42/build/libmlx42.a
 
 CC = gcc
 
-LIBFT = LIBFT/libft.a
-
-.PHONY: all, clean, fclean, re, libmlx, libft
+LIBFT = libft/libft.a
+LIBFT_DIR = libft
 
 all: $(NAME)
 
-libmlx:
-	@$(MAKE) -C $(LIBMLX)
+$(LIBMLX):
+	cmake -S $(LIBMLX) -B $(LIBMLX)/build
+	make -C $(LIBMLX)/build
 
-libft:
-	@$(MAKE) -C $(LIBFT)
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
-
-$(NAME): $(OBJ) libmlx
-	@$(CC) $(CFLAGS) $(OBJ) $(LINKFLAGS) $(LIBFT) $(HEADERS) -o $(NAME)
+$(NAME): $(LIBFT) $(LIBMLX) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LINKFLAGS) $(LIBFT) $(HEADERS) -o $(NAME)
 	
 %.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+	$(CC) $(CFLAGS) $(HEADERS) -c $^ -o $@
 
 clean:
-	$(RM) $(OBJ)
-	@$(MAKE) -C $(LIBMLX) clean
+	rm -f $(OBJ)
+	make -C libft clean
 
 fclean: clean
-	$(RM) $(NAME)
-	@$(MAKE) -C $(LIBMLX) fclean
+	rm -f $(NAME)
+	make -C libft fclean
 
 re: fclean all
+
+.PHONY: all, clean, fclean, re

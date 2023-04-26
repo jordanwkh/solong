@@ -6,16 +6,16 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/05 15:08:10 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/11/01 13:23:37 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/26 15:16:01 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "MLX42.h"
-#include "solong.h"
-#include "libft.h"
+#include <MLX42.h>
+#include <libft.h>
+#include <solong.h>
 
 char	**copyingmap(t_game *info)
 {
