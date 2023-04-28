@@ -6,16 +6,16 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/05 15:08:10 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2023/04/26 15:16:01 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/28 18:13:37 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <MLX42.h>
-#include <libft.h>
-#include <solong.h>
+#include "MLX42.h"
+#include "solong.h"
+#include "libft.h"
 
 char	**copyingmap(t_game *info)
 {
@@ -29,7 +29,6 @@ char	**copyingmap(t_game *info)
 	while (info->map[i])
 	{
 		copymap[i] = ft_strdup(info->map[i]);
-		printf("%s\n", copymap[i]);
 		i++;
 	}
 	copymap[i] = NULL;
@@ -44,7 +43,7 @@ static char	*readingmap(int fd)
 
 	line = get_next_line(fd);
 	if (!line)
-		return (false);
+		exit(EXIT_FAILURE);
 	readline = line;
 	while (line)
 	{
@@ -53,10 +52,12 @@ static char	*readingmap(int fd)
 			break ;
 		tmp = readline;
 		readline = ft_strjoin(readline, line);
-		free(tmp);
 		if (!readline)
-			(free(line));
+			exit(EXIT_FAILURE);
+		free(tmp);
+		free(line);
 	}
+	free(line);
 	return (readline);
 }
 
@@ -70,9 +71,9 @@ static bool	readfile(char **argv, t_game *info)
 		return (false);
 	readline = readingmap(fd);
 	info->map = ft_split(readline, '\n');
-	free (readline);
 	if (!info->map)
-		return (false);
+		exit(EXIT_FAILURE);
+	free(readline);
 	return (true);
 }
 
@@ -98,13 +99,15 @@ int	main(int argc, char **argv)
 
 	info.move = 0;
 	if (argc != 2)
-		return (ft_printf("%s\n", "error1"));
+		return (ft_printf("%s\n", "error"));
+	if (!check_ber_map(argv[1]))
+		return (ft_printf("%s\n", "error"));
 	if (!parse_map(argv, &info))
-		return (false);
+		exit(EXIT_FAILURE);
 	if (checkers(&info) == false)
-		return (false);
+		exit(EXIT_FAILURE);
 	start_mlx(&info);
 	mlx_loop(info.mlx);
 	mlx_terminate(info.mlx);
-	return (0);
+	exit(0);
 }

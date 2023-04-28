@@ -6,11 +6,11 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/23 16:14:04 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2023/04/26 14:58:19 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/28 15:33:53 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <solong.h>
+#include "solong.h"
 
 bool	set_images(t_game *info)
 {
@@ -19,20 +19,20 @@ bool	set_images(t_game *info)
 	imgs = &info->imgs;
 	imgs->backg_tx = mlx_load_png("imgs/grass.png");
 	imgs->collec_tx = mlx_load_png("imgs/apple.png");
-	imgs->hero_tx = mlx_load_png("imgs/char2.png");
 	imgs->wall_tx = mlx_load_png("imgs/wall.png");
 	imgs->exit_tx = mlx_load_png("imgs/door.png");
+	imgs->hero_tx = mlx_load_png("imgs/char2.png");
 	if (!imgs->backg_tx || !imgs->collec_tx || \
 	!imgs->hero_tx || !imgs->wall_tx || !imgs->exit_tx)
-		return (false);
+		exit (EXIT_FAILURE);
 	imgs->backg_img = mlx_texture_to_image (info->mlx, imgs->backg_tx);
 	imgs->collec_img = mlx_texture_to_image (info->mlx, imgs->collec_tx);
-	info->myhero.hero_img = mlx_texture_to_image (info->mlx, imgs->hero_tx);
 	imgs->wall_img = mlx_texture_to_image (info->mlx, imgs->wall_tx);
 	imgs->exit_img = mlx_texture_to_image (info->mlx, imgs->exit_tx);
+	info->myhero.hero_img = mlx_texture_to_image (info->mlx, imgs->hero_tx);
 	if (!imgs->backg_img || !imgs->collec_img || \
 	!info->myhero.hero_img || !imgs->wall_img || !imgs->exit_img)
-		return (false);
+		exit (EXIT_FAILURE);
 	return (true);
 }		
 

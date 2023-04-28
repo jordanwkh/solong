@@ -22,7 +22,7 @@ SRCS = 	main.c							\
 
 OBJ = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -Imlx -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Imlx -g #-fsanitize=address
 
 LIBMLX	= ./MLX42
 

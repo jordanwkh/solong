@@ -6,11 +6,27 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/05 13:06:39 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2023/04/26 14:58:19 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/28 16:44:20 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <solong.h>
+#include "solong.h"
+
+int	check_ber_map(char *arg)
+{
+	int	i;
+
+	i = 0;
+	if (!arg)
+		return (0);
+	while (arg[i])
+		i++;
+	i = i - 1;
+	if (arg[i] == 'r' && arg[i - 1] == 'e' && \
+			arg[i - 2] == 'b' && arg[i - 3] == '.')
+		return (1);
+	return (0);
+}
 
 bool	xwall_checker(t_game *info)
 {
@@ -69,12 +85,12 @@ bool	checkers(t_game *info)
 {
 	if (map_form_check(info) == false)
 	{
-		printf("%s\n", "Map is not sqaure, or rectangular");
+		ft_printf("%s\n", "Map is not sqaure, or rectangular");
 		return (false);
 	}	
 	if (xwall_checker(info) == false)
 	{
-		printf("%s\n", "Top or bottom wall is not closed off");
+		ft_printf("%s\n", "Top or bottom wall is not closed off");
 		return (false);
 	}	
 	if (ywall_checker(info) == false)
@@ -84,7 +100,7 @@ bool	checkers(t_game *info)
 	}	
 	if (checkingthemap(info) == false)
 	{
-		printf("%s\n", "Map can not be completed");
+		ft_printf("%s\n", "Map can not be completed");
 		return (false);
 	}
 	return (true);

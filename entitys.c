@@ -6,11 +6,11 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/05 13:05:23 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2023/04/26 14:58:19 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/27 18:07:42 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <solong.h>
+#include "solong.h"
 
 static bool	check(t_game *info, int x, int y)
 {
@@ -25,15 +25,18 @@ static bool	check(t_game *info, int x, int y)
 		info->player++;
 	}			
 	else if (info->map[y][x] != '1' && info->map[y][x] != '0')
+	{
+		ft_printf("%s\n", "There is an invalid letter or number in the map");
 		return (false);
+	}
 	return (true);
 }
 
 static bool	check_printer(t_game *info)
 {
-	if (info->exit < 1)
+	if (info->exit < 1 || info->exit > 1)
 	{
-		ft_printf("%s\n", "There must be atleast 1 exit");
+		ft_printf("%s\n", "There must be atleast and can only be 1 exit");
 		return (false);
 	}
 	if (info->player != 1)

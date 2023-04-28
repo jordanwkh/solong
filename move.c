@@ -6,11 +6,11 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/22 16:08:21 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2023/04/26 14:58:19 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2022/11/18 15:46:39 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <solong.h>
+#include "solong.h"
 
 void	my_keyhook(mlx_key_data_t keydata, t_game *info)
 {
@@ -81,7 +81,6 @@ bool	doing_exit(t_game *info, int x_direction, int y_direction)
 	{
 		info->collected--;
 		info->map[py][px] = '0';
-		printf("%d\n", info->collected);
 	}	
 	if (info->map[py][px] == 'E' && info->collected == 0)
 		mlx_close_window(info->mlx);

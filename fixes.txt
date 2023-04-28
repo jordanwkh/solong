@@ -1,0 +1,7 @@
+.ber files only //DONE
+
+new lines at the start/middle/end
+
+leaks in parsing (readingmap, line)
+
+press / release on movement

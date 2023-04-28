@@ -6,7 +6,7 @@
 #    By: jhoekstr <jhoekstr@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/25 18:32:03 by jhoekstr      #+#    #+#                  #
-#    Updated: 2022/10/05 14:02:30 by jhoekstr      ########   odam.nl          #
+#    Updated: 2022/12/07 19:25:38 by jhoekstr      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,8 +71,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-.PHONY: fclean clean re
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -94,3 +92,5 @@ fclean: clean
 	$(RM) $(NAME)
 
 re:	fclean all
+
+.PHONY: fclean clean re

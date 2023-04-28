@@ -6,7 +6,7 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/26 16:48:34 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/05 14:48:47 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/28 17:20:10 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_toupper(int c);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const	*s1, char const *s2);
+char	*ft_strjoin(char *s1, char const *s2);
 void	ft_putchar_fd(char c, int fd);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);

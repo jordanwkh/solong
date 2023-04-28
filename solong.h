@@ -6,7 +6,7 @@
 /*   By: jhoekstr <jhoekstr@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/05 15:20:09 by jhoekstr      #+#    #+#                 */
-/*   Updated: 2022/10/31 16:03:25 by jhoekstr      ########   odam.nl         */
+/*   Updated: 2023/04/28 18:02:13 by jhoekstr      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ typedef struct s_game
 	char			**copymap;
 	bool			exit_reach;
 	bool			collect_reach;
+	char			*readline;
 
 }	t_game;
 
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s1);
 char	*get_next_line(int fd);
-char	*ft_strjoin(char const	*s1, char const *s2);
 bool	xwall_checker(t_game *info);
 bool	ywall_checker(t_game *info);
 bool	entity_checker(t_game *info);
@@ -91,4 +91,6 @@ bool	doing_exit(t_game *info, int x_direction, int y_direction);
 void	floodfill(t_game *info, char **copymap, int x, int y);
 char	**copyingmap(t_game *info);
 bool	checkingthemap(t_game *info);
+int		check_ber_map(char *arg);
+void	free_2d(char **array);
 #endif
